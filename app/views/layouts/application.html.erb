@@ -20,6 +20,34 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <nav style="background-color: #333;">
+        <a class="navbar-brand" href="#">CMM Time Tracker</a>
+          <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
+            <li style="float: left; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">
+              <%= link_to "Home", root_path %>
+            </li>
+            <li style="float: left; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">
+              <%= link_to "New Customer", new_customer_path%>
+            </li>
+            <li style="float: left; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">
+              <%= link_to "New Project", new_project_path%>
+            </li>
+            <li style="float: left; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">
+              <%= link_to "New Task", new_task_path%>
+            </li>
+            <li style="float: left; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">
+              <%= link_to "My Tasks", task_entries_path%>
+            </li>
+            <li style="float: left; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">
+              <%= link_to "Edit Profile", edit_user_registration_path(current_user)%>
+            </li>
+            <li style="float: left; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}%>
+            </li>
+          </ul>
+      </nav>
+    <% end %>
     <% if notice %>
       <div class="alert alert-info custom-pop-up" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

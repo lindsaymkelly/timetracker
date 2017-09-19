@@ -14,4 +14,8 @@
 class TaskEntry < ApplicationRecord
   belongs_to :task 
   
+
+  def display_time
+    Time.at(duration).utc.strftime("%H:%M:%S")
+  end
 end

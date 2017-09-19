@@ -1,7 +1,9 @@
-<h1> Congratulations, you've reached the home page! </h1>
-<ul>
-  <li><%= link_to "Add new customer", new_customer_path %></li>
-  <li><%= link_to "Add new project", new_project_path %></li>
-  <li><%= link_to "Add new task", new_task_path %></li>
-  <li><%= link_to "View My Tasks", task_entries_path %></li>
-</ul>
+<div class="container text-center">
+  <h1> Welcome to the CMM Time Tracker! </h1>
+  <ul class="list-unstyled">
+    <li><%= link_to "Add New Customer", new_customer_path %></li>
+    <li><%= link_to "Add New Project", new_project_path %></li>
+    <li><%= link_to "Add New Task", new_task_path %></li>
+    <li><%= link_to "View My Tasks", task_entries_path %></li>
+  </ul>
+</div>

@@ -1,16 +1,33 @@
-<h1> Task Dashboard </h1>
-<%=link_to "New Entry", new_task_entry_path %>
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%=task.task_name %></li>
-    <ul>
-      <%task.task_entries.each do |te| %>
-        <li><%= te.note %></li>
-        <li><%= te.duration %></li>
-        <li><%=link_to "Edit Entry", edit_task_entry_path(te.id)%></li>
+<div style="padding-bottom: 5%;" class="container text-center">
+  <h1> Task Dashboard </h1>
+  <%=link_to "New Entry", new_task_entry_path, :class => "btn btn-info" %>
+</div>
+
+<div class="container-fluid">
+  <table class="table">
+    <% @tasks.each do |task| %>
+      <tr>
+        <th><%=task.task_name %> (<%=task.project.project_name %>)</th>
+        <th>Entry: </th>
+        <th>Duration: </th>
+        <th>Start Time: </th>
+        <th>Stop </th>
+        <th>Edit </th>
+      </tr>
+      <% task.task_entries.each do |te| %>
+        <tr>
+          <td> </td>
+          <td><%= te.note %></td>
+          <td><%= te.duration.present? ? te.display_time : "In Progress" %></td>
+          <td><%= te.start_time.present? ? te.start_time.strftime("%I:%M:%S %p") : "N/A" %></td>
+          <% if !te.duration.present? %>
+            <td><%=link_to "Stop Timer", task_entries_stop_timer_path(id: te.id), method: :update, data: {confirm: "Are you sure you want to stop the timer?"}, :class => "btn btn-danger btn-sm" %></td>
+          <% else %>
+            <td> N/A </td>
+          <% end %>
+          <td><%=link_to "Edit Entry", edit_task_entry_path(te.id), :class => "btn btn-info btn-sm"%></li></td>
+        </tr>
       <% end %>
-    </ul>
-
-  <% end %>
-</ul>
-
+    <% end %>
+  </table>
+</div>
