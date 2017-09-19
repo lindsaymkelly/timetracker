@@ -1,0 +1,9 @@
+<h2> Edit Task Entry: </h2>
+<%= form_for @task_entry, url: {action: "update"} do |f| %>
+  <%= select_tag :task, options_for_select(Task.pluck(:task_name))%>
+  <%=f.label 'Note' %>
+  <%=f.text_area :note %>
+  <%=f.label 'Duration' %>
+  <%=f.number_field :duration %>
+  <%=f.submit "Save", :class => "btn btn-primary" %>
+<% end %> 

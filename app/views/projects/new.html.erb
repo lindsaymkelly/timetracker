@@ -1,0 +1,7 @@
+<h2> Add Project: </h2>
+<%= form_for @project, url: {action: "create"} do |f| %>
+  <%=f.label 'Project Name:' %>
+  <%=f.text_field :project_name %>
+  <%= select_tag :customer, options_for_select(Customer.pluck(:company))%>
+  <%=f.submit "Add Project", :class => "btn btn-primary" %>
+<% end %>

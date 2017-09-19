@@ -1,0 +1,7 @@
+<h2> Add Task: </h2>
+<%= form_for @task, url: {action: "create"} do |f| %>
+  <%=f.label 'Task Name:' %>
+  <%=f.text_field :task_name %>
+  <%= select_tag :project, options_for_select(Project.pluck(:project_name))%>
+  <%=f.submit "Add Task", :class => "btn btn-primary" %>
+<% end %>

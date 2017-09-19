@@ -1,0 +1,16 @@
+<h1> Task Dashboard </h1>
+<%=link_to "New Entry", new_task_entry_path %>
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%=task.task_name %></li>
+    <ul>
+      <%task.task_entries.each do |te| %>
+        <li><%= te.note %></li>
+        <li><%= te.duration %></li>
+        <li><%=link_to "Edit Entry", edit_task_entry_path(te.id)%></li>
+      <% end %>
+    </ul>
+
+  <% end %>
+</ul>
+
